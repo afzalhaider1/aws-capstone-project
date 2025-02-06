@@ -1,6 +1,6 @@
 customhost = "database-1.cpcg2s8giqef.us-east-1.rds.amazonaws.com"
 customuser = "admin"
-custompass = "12345678"
+custompass = "Admin123"
 customdb = "data"
 custombucket = "aws-case-study-project-0602"
 customregion = "us-east-1"
