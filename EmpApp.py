@@ -31,9 +31,9 @@ table = 'employee';
 def home():
     return render_template('AddEmp.html')
 
-@app.route("/about", methods=['GET'])
+@app.route("/about", methods=['POST'])
 def about():
-    return redirect('http://aws-case-study-project-0602.s3-website-us-east-1.amazonaws.com/');
+    return render_template('www.intellipaat.com');
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
     emp_id = request.form['emp_id']
@@ -117,14 +117,14 @@ def FetchData():
     emp_id = request.form['emp_id']
 
     output = {}
-    select_sql = "SELECT empid, first_name, last_name, pri_skill, location from employee where emp_id=%s"
+    select_sql = "SELECT emp_id, first_name, last_name, pri_skill, location from employee where emp_id=%s"
     cursor = db_conn.cursor()
 
     try:
-        cursor.execute(select_sql, (emp_id,))
+        cursor.execute(select_sql,(emp_id))
         result = cursor.fetchone()
 
-        output["empid"] = result[0]
+        output["emp_id"] = result[0]
         print('EVERYTHING IS FINE TILL HERE')
         output["first_name"] = result[1]
         output["last_name"] = result[2]
