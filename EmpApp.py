@@ -51,7 +51,7 @@ def AddEmp():
 
     try:
         
-        cursor.execute(insert_sql,(emp_id, first_name, last_name, pri_skill, location))
+        cursor.execute(insert_sql,(empid, first_name, last_name, pri_skill, location))
         db_conn.commit()
         emp_name = "" + first_name + " " + last_name
         # Uplaod image file in S3 #
@@ -121,10 +121,10 @@ def FetchData():
     cursor = db_conn.cursor()
 
     try:
-        cursor.execute(select_sql,(emp_id))
+        cursor.execute(select_sql, (emp_id,))
         result = cursor.fetchone()
 
-        output["emp_id"] = result[0]
+        output["empid"] = result[0]
         print('EVERYTHING IS FINE TILL HERE')
         output["first_name"] = result[1]
         output["last_name"] = result[2]
